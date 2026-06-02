@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Community Event Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #f4f7fb;
+    }
+  </style>
+</head>
+<body>
+  <header id="mainHeader" class="page-banner">
+    <h1 style="color: red;">Local Community Event Portal</h1>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#bulletin">Bulletin</a></li>
+        <li><a href="#admin">Admin Table</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="hero">
+      <h2>Welcome to Your Neighborhood Hub</h2>
+      <p class="intro">Discover upcoming local events, volunteer opportunities, and city announcements that keep your community connected.</p>
+    </section>
+
+    <section id="events">
+      <h2 class="section-title">Featured Events</h2>
+      <div class="events-grid">
+        <article class="eventCard">
+          <h3>Park Cleanup</h3>
+          <p>Join neighbors in making our park greener and cleaner.</p>
+          <ul>
+            <li><strong>Date:</strong> June 12</li>
+            <li><strong>Time:</strong> 9:00 AM</li>
+            <li><strong>Location:</strong> Maple Community Park</li>
+          </ul>
+        </article>
+
+        <article class="eventCard">
+          <h3>Local Farmers Market</h3>
+          <p>Fresh produce, crafts, and live music every weekend.</p>
+          <ul>
+            <li><strong>Date:</strong> Every Saturday</li>
+            <li><strong>Time:</strong> 8:00 AM - 1:00 PM</li>
+            <li><strong>Location:</strong> City Hall Plaza</li>
+          </ul>
+        </article>
+
+        <article class="eventCard">
+          <h3>Summer Art Workshop</h3>
+          <p>Free creative sessions for all ages hosted by local artists.</p>
+          <ul>
+            <li><strong>Date:</strong> June 20</li>
+            <li><strong>Time:</strong> 1:00 PM - 4:00 PM</li>
+            <li><strong>Location:</strong> Community Arts Center</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="bulletin" class="news-article">
+      <h2 class="section-title">Community Bulletin</h2>
+      <div class="bulletin-text">
+        <p>The city is planning a new bike lane along Oak Street to improve safe travel for cyclists. Residents are invited to the public hearing on June 18 to share feedback.</p>
+        <p>New library hours will begin next month, including evening access on Tuesdays and Thursdays. This change supports young professionals and busy families.</p>
+        <p>Volunteer mentors are needed for the youth coding circle. Help build practical skills and confidence among local teens.</p>
+      </div>
+    </section>
+
+    <section id="admin" class="admin-panel">
+      <h2 class="section-title">Event Admin Table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Capacity</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Park Cleanup</td>
+            <td>June 12</td>
+            <td>45</td>
+            <td>Confirmed</td>
+          </tr>
+          <tr>
+            <td>Farmers Market</td>
+            <td>Weekly</td>
+            <td>120</td>
+            <td>Open</td>
+          </tr>
+          <tr>
+            <td>Art Workshop</td>
+            <td>June 20</td>
+            <td>30</td>
+            <td>Register</td>
+          </tr>
+          <tr>
+            <td>City Clean Day</td>
+            <td>July 3</td>
+            <td>60</td>
+            <td>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="signup-form">
+      <h2 class="section-title">Register for Updates</h2>
+      <form>
+        <label for="name">Name</label>
+        <input id="name" type="text" class="outline-field" placeholder="Enter your name">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" class="outline-field" placeholder="Enter your email">
+
+        <label for="newsletter">Newsletter topics</label>
+        <select id="newsletter" class="outline-field">
+          <option>Events</option>
+          <option>Volunteering</option>
+          <option>City updates</option>
+        </select>
+
+        <button type="submit" class="cta-button">Subscribe Now</button>
+      </form>
+    </section>
+
+    <section class="visibility-demo">
+      <h2 class="section-title">Visibility Examples</h2>
+      <p class="visible-text">This paragraph is visible and normal.</p>
+      <p class="hidden-text">This paragraph uses visibility: hidden, so it takes up space but is not shown.</p>
+      <p class="none-text">This paragraph uses display: none, so it is removed from layout.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Local Community Event Portal &copy; 2026</p>
+  </footer>
+</body>
+</html>
