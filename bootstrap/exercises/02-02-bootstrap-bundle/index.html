@@ -1,0 +1,25 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 2.2 - JavaScript Bundle</title>
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="../../shared/site.css" rel="stylesheet">
+
+</head>
+<body>
+  <main class="exercise-shell">
+    <div class="exercise-title">
+      <a href="../../index.html" class="btn btn-sm btn-outline-secondary mb-3">Back to exercises</a>
+      <h1 class="h3 mb-1">Exercise 2.2 - JavaScript Bundle</h1>
+      <p class="text-muted mb-0">HTML page that includes Bootstrap JavaScript plugins with bootstrap.bundle.min.js.</p>
+    </div>
+    <p class="text-muted">The collapse button below needs the Bootstrap bundle.</p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#bundleDemo">Toggle plugin demo</button>
+    <div class="collapse mt-3" id="bundleDemo"><div class="card card-body">Bootstrap JavaScript is active through <code>bootstrap.bundle.min.js</code>.</div></div>
+  </main>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
