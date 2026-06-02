@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Summer Music Night",
+    "date": "2026-07-12",
+    "category": "music",
+    "location": "Central Park",
+    "seats": 6
+  },
+  {
+    "id": 2,
+    "name": "Workshop on Baking",
+    "date": "2026-06-18",
+    "category": "workshop",
+    "location": "Community Hall",
+    "seats": 8
+  },
+  {
+    "id": 3,
+    "name": "Neighborhood Football Meetup",
+    "date": "2026-06-25",
+    "category": "sports",
+    "location": "Riverfront",
+    "seats": 12
+  },
+  {
+    "id": 4,
+    "name": "Local Food Tasting",
+    "date": "2026-08-04",
+    "category": "food",
+    "location": "Community Hall",
+    "seats": 10
+  },
+  {
+    "id": 5,
+    "name": "Past Craft Fair",
+    "date": "2025-05-20",
+    "category": "workshop",
+    "location": "Library",
+    "seats": 5
+  },
+  {
+    "id": 6,
+    "name": "Sold Out Jazz Class",
+    "date": "2026-07-19",
+    "category": "music",
+    "location": "Library",
+    "seats": 0
+  }
+]

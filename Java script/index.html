@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Community Event Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+      background: #f5f7fb;
+    }
+
+    header {
+      padding: 28px 20px;
+      color: #fff;
+      background: #24516a;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 720px;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .toolbar,
+    .registration-panel,
+    .debug-panel {
+      margin-bottom: 20px;
+      padding: 16px;
+      border: 1px solid #d9e1ea;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 12px;
+      align-items: end;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      min-height: 40px;
+      padding: 8px 10px;
+      border: 1px solid #b9c6d3;
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      color: #fff;
+      background: #24745b;
+      font-weight: 700;
+    }
+
+    button.secondary {
+      background: #6a7180;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      background: #95a0ad;
+    }
+
+    .status {
+      min-height: 24px;
+      margin: 10px 0 0;
+      color: #24516a;
+      font-weight: 700;
+    }
+
+    .error {
+      min-height: 20px;
+      margin-top: 4px;
+      color: #b42318;
+      font-size: 0.9rem;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .event-card {
+      display: flex;
+      min-height: 260px;
+      padding: 16px;
+      border: 1px solid #d9e1ea;
+      border-radius: 8px;
+      background: #fff;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .event-card h3 {
+      margin: 0;
+      color: #16394c;
+    }
+
+    .event-meta {
+      margin: 0;
+      color: #4d5b67;
+      line-height: 1.45;
+    }
+
+    .event-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .spinner {
+      display: none;
+      margin-bottom: 14px;
+      font-weight: 700;
+      color: #24516a;
+    }
+
+    .spinner.visible {
+      display: block;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .form-actions {
+      margin-top: 14px;
+      max-width: 240px;
+    }
+
+    pre {
+      overflow-x: auto;
+      margin: 0;
+      padding: 12px;
+      border-radius: 6px;
+      background: #eef3f7;
+    }
+
+    @media (max-width: 760px) {
+      .toolbar,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Local Community Event Portal</h1>
+    <p>Browse upcoming events, filter by category or location, and register for open seats.</p>
+  </header>
+
+  <main>
+    <section class="toolbar" aria-label="Event filters">
+      <div>
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="all">All categories</option>
+          <option value="music">Music</option>
+          <option value="workshop">Workshop</option>
+          <option value="sports">Sports</option>
+          <option value="food">Food</option>
+        </select>
+      </div>
+      <div>
+        <label for="locationFilter">Location</label>
+        <select id="locationFilter">
+          <option value="all">All locations</option>
+          <option value="Community Hall">Community Hall</option>
+          <option value="Central Park">Central Park</option>
+          <option value="Library">Library</option>
+          <option value="Riverfront">Riverfront</option>
+        </select>
+      </div>
+      <div>
+        <label for="searchInput">Quick search</label>
+        <input id="searchInput" type="search" placeholder="Search by event name">
+      </div>
+    </section>
+
+    <p id="loadingSpinner" class="spinner">Loading events...</p>
+    <p id="message" class="status" role="status"></p>
+    <section id="eventsContainer" class="events-grid" aria-label="Upcoming events"></section>
+
+    <section class="registration-panel">
+      <h2>Register for an Event</h2>
+      <form id="registrationForm" novalidate>
+        <div class="form-grid">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+            <div id="nameError" class="error"></div>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+            <div id="emailError" class="error"></div>
+          </div>
+          <div>
+            <label for="eventSelect">Event</label>
+            <select id="eventSelect" name="eventId"></select>
+            <div id="eventError" class="error"></div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button id="registerBtn" type="submit">Submit Registration</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="debug-panel">
+      <h2>Debug Notes</h2>
+      <pre id="debugOutput">Open Chrome DevTools Console and Network tabs to inspect logs and fetch payloads.</pre>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
