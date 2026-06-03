@@ -1,0 +1,14 @@
+.classpath
+.project
+*.class
+*.jar
+.vscode/
+.idea/
+*.iml
+target/
+bin/
+build/
+*.db
+output.txt
+student.db
+bank.db
